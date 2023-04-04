@@ -12,7 +12,7 @@
 
 #include "philo.h"
 
-int	ft_isspace(size_t c)
+int	ft_isspace(int c)
 {
 	if ((c == ' ' || c == '\t' || c == '\v'
 			|| c == '\n' || c == '\f' || c == '\r'))

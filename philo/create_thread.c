@@ -26,7 +26,7 @@ void	create_thread(t_phi *phi)
 	pthread_attr_setdetachstate(&dth, PTHREAD_CREATE_DETACHED);
 	while (++i < phi->nph)
 	{
-		thr = new_th(phi, i);
+		thr = new_th(phi, i + 1);
 		if (pthread_create(&th[i], &dth, &thread, thr))
 			perror("Creation of TH Failed");
 	}

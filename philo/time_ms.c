@@ -12,17 +12,17 @@
 
 #include "philo.h"
 
-size_t	time_ms(void)
+int	time_ms(void)
 {
 	struct timeval	now;
-	size_t			time;
+	int				time;
 
 	gettimeofday(&now, NULL);
 	time = 1000 * now.tv_sec + now.tv_usec / 1000;
 	return (time);
 }
 
-size_t	now(size_t st)
+int	now(int st)
 {
 	return (time_ms() - st);
 }

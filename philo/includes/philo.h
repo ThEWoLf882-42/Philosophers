@@ -22,8 +22,8 @@
 
 typedef struct th
 {
-	size_t			st;
-	size_t			le;
+	int				st;
+	int				le;
 	int				id;
 	int				ec;
 	struct philo	*phi;
@@ -45,15 +45,15 @@ typedef struct philo
 	t_th			*th;
 }	t_phi;
 
-size_t	ft_atoi(char *str);
-int		ft_isspace(size_t c);
+int		ft_atoi(char *str);
+int		ft_isspace(int c);
 void	set_arg(t_phi *phi,int ac, char **av);
 void	set_forks(t_phi	*phi);
 void	create_thread(t_phi *phi);
 void	*thread(void *arg);
-size_t	time_ms(void);
-size_t	my_sleep(int ms);
-size_t	now(size_t st);
+int		time_ms(void);
+void	my_sleep(int ms);
+int		now(int st);
 t_th	*new_th(t_phi *phi, int id);
 void	ft_lstadd_back(t_th *th, t_th *new);
 t_th	*ft_lstlast(t_th *lst);

@@ -14,10 +14,11 @@
 
 void	set_forks(t_phi	*phi)
 {
-	pthread_mutex_t	forks[phi->nph];
+	pthread_mutex_t	*forks;
 	int				i;
 
 	i = -1;
+	forks = malloc(sizeof(pthread_mutex_t) * phi->nph);
 	while (++i < phi->nph)
 		pthread_mutex_init(&forks[i], NULL);
 	phi->fork = forks;
