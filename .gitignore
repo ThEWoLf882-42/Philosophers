@@ -1,0 +1,6 @@
+/d.c
+/t.c
+*.exe
+*.a
+.vscode
+.DS_Store
