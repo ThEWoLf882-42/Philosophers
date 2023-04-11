@@ -42,6 +42,9 @@ t_th	*new_th(t_phi *phi, int id)
 	th->phi = phi;
 	th->ec = 0;
 	th->next = NULL;
-	ft_lstadd_back(phi->th, th);
+	if (id == 1)
+		phi->th = th;
+	else
+		ft_lstadd_back(phi->th, th);
 	return (th);
 }

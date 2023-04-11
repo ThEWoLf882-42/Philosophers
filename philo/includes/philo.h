@@ -22,8 +22,8 @@
 
 typedef struct th
 {
-	int				st;
-	int				le;
+	size_t			st;
+	size_t			le;
 	int				id;
 	int				ec;
 	struct philo	*phi;
@@ -33,31 +33,36 @@ typedef struct th
 
 typedef struct philo
 {
-	int				nph;
-	int				td;
-	int				te;
-	int				ts;
-	int				npe;
-	int				dead;
-	int				*id;
-	pthread_mutex_t	mdead;
-	pthread_mutex_t	*fork;
-	t_th			*th;
+	int					nph;
+	int					td;
+	int					te;
+	int					ts;
+	int					npe;
+	int					dead;
+	int					done;
+	int					*id;
+	pthread_mutex_t		mdone;
+	pthread_mutex_t		mprint;
+	pthread_mutex_t		*fork;
+	t_th				*th;
 }	t_phi;
 
 int		ft_atoi(char *str);
 int		ft_isspace(int c);
+int		ft_issnu(char *s);
 void	set_arg(t_phi *phi,int ac, char **av);
 void	set_forks(t_phi	*phi);
 void	create_thread(t_phi *phi);
 void	*thread(void *arg);
-int		time_ms(void);
-void	my_sleep(int ms);
-int		now(int st);
+size_t	time_ms(void);
+void	my_sleep(size_t	now, int ms);
+size_t	now(size_t st);
 t_th	*new_th(t_phi *phi, int id);
 void	ft_lstadd_back(t_th *th, t_th *new);
 t_th	*ft_lstlast(t_th *lst);
 void	eat(t_th *th);
-void	take_fork(t_th *th);
+void	take_forks(t_th *th);
+void	create_mon(t_phi *phi);
+void	*mon(void *arg);
 
 #endif

@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   time_ms.c                                          :+:      :+:    :+:   */
+/*   create_mon.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/31 15:43:03 by agimi             #+#    #+#             */
-/*   Updated: 2023/03/31 15:43:03 by agimi            ###   ########.fr       */
+/*   Created: 2023/04/05 16:19:54 by agimi             #+#    #+#             */
+/*   Updated: 2023/04/05 16:19:54 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-size_t	time_ms(void)
+void	create_mon(t_phi *phi)
 {
-	struct timeval	now;
-	size_t			time;
+	pthread_t		mo;
+	pthread_attr_t	dmo;
 
-	gettimeofday(&now, NULL);
-	time = 1000 * now.tv_sec + now.tv_usec / 1000;
-	return (time);
-}
-
-size_t	now(size_t st)
-{
-	return (time_ms() - st);
+	pthread_attr_init(&dmo);
+	pthread_attr_setdetachstate(&dmo, PTHREAD_CREATE_DETACHED);
+	if (pthread_create(&mo, &dmo, &mon, phi))
+			perror("Creation of MON Failed");
 }

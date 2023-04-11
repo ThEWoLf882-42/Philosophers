@@ -1,28 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   time_ms.c                                          :+:      :+:    :+:   */
+/*   mon.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/31 15:43:03 by agimi             #+#    #+#             */
-/*   Updated: 2023/03/31 15:43:03 by agimi            ###   ########.fr       */
+/*   Created: 2023/04/05 16:25:24 by agimi             #+#    #+#             */
+/*   Updated: 2023/04/05 16:25:24 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-size_t	time_ms(void)
+void	*mon(void *arg)
 {
-	struct timeval	now;
-	size_t			time;
+	t_phi	*phi;
+	t_th	*th;
 
-	gettimeofday(&now, NULL);
-	time = 1000 * now.tv_sec + now.tv_usec / 1000;
-	return (time);
-}
-
-size_t	now(size_t st)
-{
-	return (time_ms() - st);
+	phi = (t_phi *)arg;
+	th = phi->th;
+	while (phi->done != phi->nph)
+	{
+		while (th)
+		{
+			if ((int)now(th->le) > phi->td)
+			{
+				pthread_mutex_lock(&phi->mprint);
+				printf("%lld %d died\n", now(th->st), th->id);
+				pthread_mutex_unlock(&phi->mprint);
+				phi->dead = 1;
+				exit(0);
+			}
+			th = th->next;
+		}
+		th = phi->th;
+	}
+	return (NULL);
 }

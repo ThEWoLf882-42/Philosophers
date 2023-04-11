@@ -12,16 +12,14 @@
 
 #include "philo.h"
 
-void	my_sleep(int ms)
+void	my_sleep(size_t	now, int ms)
 {
-	int	now;
-	int	aft;
-
-	now = time_ms();
+	size_t	aft;
+	
 	aft = time_ms();
-	while ((aft - now) != ms)	
+	while ((int)(aft - now) < ms)
 	{
-		usleep(10);
+		usleep(ms);
 		aft = time_ms();
 	}
 }

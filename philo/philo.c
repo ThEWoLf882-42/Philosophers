@@ -22,6 +22,9 @@ int	main(int ac, char **av)
 		set_arg(phi, ac, av);
 		set_forks(phi);
 		create_thread(phi);
+		create_mon(phi);
 	}
+	else
+		printf("Please enter 4/5 Argument\n");
 	pthread_exit(0);
 }

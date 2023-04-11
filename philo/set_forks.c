@@ -22,5 +22,6 @@ void	set_forks(t_phi	*phi)
 	while (++i < phi->nph)
 		pthread_mutex_init(&forks[i], NULL);
 	phi->fork = forks;
-	pthread_mutex_init(&phi->mdead, NULL);
+	pthread_mutex_init(&phi->mdone, NULL);
+	pthread_mutex_init(&phi->mprint, NULL);
 }

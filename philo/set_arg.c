@@ -14,6 +14,15 @@
 
 void	set_arg(t_phi *phi,int ac, char **av)
 {
+	// int i;
+
+	// i = 0;
+	// while (av[++i])
+	// 	if (!ft_issnu(av[i]))
+	// 	{
+	// 		printf("Wrong Arg [%d]\n", i);
+	// 		exit(1);
+	// 	}
 	phi->nph = ft_atoi(av[1]);
 	phi->td = ft_atoi(av[2]);
 	phi->te = ft_atoi(av[3]);
@@ -22,4 +31,6 @@ void	set_arg(t_phi *phi,int ac, char **av)
 		phi->npe = ft_atoi(av[5]);
 	else
 		phi->npe = -1;
+	phi->done = 0;
+	phi->dead = 0;
 }

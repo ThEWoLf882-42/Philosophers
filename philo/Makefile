@@ -1,7 +1,7 @@
 NAME = philo
 
 CC = cc
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -pthread
 INCLUDES = -I$(HEADERS_DIRECTORY)
 
 HEADERS_LIST = philo.h
@@ -9,10 +9,12 @@ HEADERS_DIRECTORY = ./includes/
 HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
 
 SOURCES_DIRECTORY = ./
-SOURCES_LIST =	create_thread.c \
+SOURCES_LIST =	create_mon.c \
+				create_thread.c \
 				eat.c \
 				ft_atoi.c \
-				ft_isspace.c \
+				ft_is.c \
+				mon.c \
 				my_sleep.c \
 				new_th.c \
 				philo.c \

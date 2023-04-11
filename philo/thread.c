@@ -18,6 +18,23 @@ void	*thread(void *arg)
 
 	th = (t_th *)arg;
 	th->st = time_ms();
-	eat(th);
+	th->le = th->st;
+	while (th->ec != th->phi->npe && !th->phi->dead)
+	{
+		eat(th);
+		pthread_mutex_lock(&th->phi->mprint);
+		printf("%lld %d is sleeping\n", now(th->st), th->id);
+		pthread_mutex_unlock(&th->phi->mprint);
+		my_sleep(time_ms(), th->phi->ts);
+		pthread_mutex_lock(&th->phi->mprint);
+		printf("%lld %d is thinking\n", now(th->st), th->id);
+		pthread_mutex_unlock(&th->phi->mprint);
+	}
+	if (th->ec == th->phi->npe)
+	{
+		pthread_mutex_lock(&th->phi->mdone);
+		th->phi->done++;
+		pthread_mutex_unlock(&th->phi->mdone);
+	}
 	return (NULL);
 }

@@ -19,3 +19,14 @@ int	ft_isspace(int c)
 		return (1);
 	return (0);
 }
+
+int	ft_issnu(char *s)
+{
+	int	i;
+
+	i = -1;
+	while (s[++i])
+		if (s[i] < '0' || s[i] > '9')
+			return (0);
+	return (1);
+}
