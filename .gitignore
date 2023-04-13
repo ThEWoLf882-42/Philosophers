@@ -2,6 +2,7 @@
 /t.c
 *.exe
 *.a
+*.o
 .vscode
 .DS_Store
 out
