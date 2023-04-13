@@ -50,11 +50,8 @@ void	unlock_fork(t_th *th)
 
 	id = th->id - 1;
 	forks = th->phi->fork;
-	if (!(id % 2))
-	{	
-		pthread_mutex_unlock(&forks[id]);
-		pthread_mutex_unlock(&forks[(id + 1) % th->phi->nph]);
-	}
+	pthread_mutex_unlock(&forks[id]);
+	pthread_mutex_unlock(&forks[(id + 1) % th->phi->nph]);
 }
 
 void	eat(t_th *th)
