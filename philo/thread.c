@@ -19,6 +19,8 @@ void	*thread(void *arg)
 	th = (t_th *)arg;
 	th->st = time_ms();
 	th->le = th->st;
+	if (!(th->id % 2))
+		my_sleep(time_ms(), th->phi->te / 2);
 	while (th->ec != th->phi->npe && !th->phi->dead)
 	{
 		eat(th);

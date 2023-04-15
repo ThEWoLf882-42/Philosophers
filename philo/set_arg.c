@@ -14,15 +14,15 @@
 
 void	set_arg(t_phi *phi,int ac, char **av)
 {
-	// int i;
+	int i;
 
-	// i = 0;
-	// while (av[++i])
-	// 	if (!ft_issnu(av[i]))
-	// 	{
-	// 		printf("Wrong Arg [%d]\n", i);
-	// 		exit(1);
-	// 	}
+	i = 0;
+	while (av[++i])
+		if (!ft_issnu(av[i]))
+		{
+			printf("Wrong Arg [%d]\n", i);
+			exit(1);
+		}
 	phi->nph = ft_atoi(av[1]);
 	phi->td = ft_atoi(av[2]);
 	phi->te = ft_atoi(av[3]);

@@ -23,7 +23,7 @@ void	*mon(void *arg)
 	{
 		while (th)
 		{
-			if ((int)now(th->le) > phi->td && (th->ec != th->phi->npe))
+			if (now(th->le) > (size_t)phi->td && (th->ec != th->phi->npe))
 			{
 				pthread_mutex_lock(&phi->mprint);
 				printf("%lld %d died\n", now(th->st), th->id);

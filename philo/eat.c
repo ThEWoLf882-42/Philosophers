@@ -19,25 +19,21 @@ void	take_forks(t_th *th)
 
 	id = th->id - 1;
 	forks = th->phi->fork;
-	if(!(id % 2))
+	if(!(th->id % 2))
 	{
 		pthread_mutex_lock(&forks[id]);
-		pthread_mutex_lock(&th->phi->mprint);
-		printf("%lld %d has taken a fork\n", now(th->st), id + 1);
-		pthread_mutex_unlock(&th->phi->mprint);
 		pthread_mutex_lock(&forks[(id + 1) % th->phi->nph]);
 		pthread_mutex_lock(&th->phi->mprint);
+		printf("%lld %d has taken a fork\n", now(th->st), id + 1);
 		printf("%lld %d has taken a fork\n", now(th->st), id + 1);
 		pthread_mutex_unlock(&th->phi->mprint);
 	}
 	else
 	{
 		pthread_mutex_lock(&forks[(id + 1) % th->phi->nph]);
-		pthread_mutex_lock(&th->phi->mprint);
-		printf("%lld %d has taken a fork\n", now(th->st), id + 1);
-		pthread_mutex_unlock(&th->phi->mprint);
 		pthread_mutex_lock(&forks[id]);
 		pthread_mutex_lock(&th->phi->mprint);
+		printf("%lld %d has taken a fork\n", now(th->st), id + 1);
 		printf("%lld %d has taken a fork\n", now(th->st), id + 1);
 		pthread_mutex_unlock(&th->phi->mprint);
 	}
@@ -57,10 +53,10 @@ void	unlock_fork(t_th *th)
 void	eat(t_th *th)
 {
 	take_forks(th);
+	th->le = time_ms();
 	pthread_mutex_lock(&th->phi->mprint);
 	printf("%lld %d is eating\n", now(th->st), th->id);
 	pthread_mutex_unlock(&th->phi->mprint);
-	th->le = time_ms();
 	my_sleep(time_ms(), th->phi->te);
 	unlock_fork(th);
 	th->ec++;
