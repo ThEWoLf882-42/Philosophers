@@ -14,12 +14,6 @@
 
 void	my_sleep(size_t	now, int ms)
 {
-	size_t	aft;
-	
-	aft = time_ms();
-	while ((aft - now) < (size_t)ms)
-	{
+	while ((time_ms() - now) < (size_t)ms)
 		usleep(ms);
-		aft = time_ms();
-	}
 }

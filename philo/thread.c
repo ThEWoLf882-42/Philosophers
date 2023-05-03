@@ -31,6 +31,7 @@ void	*thread(void *arg)
 		pthread_mutex_lock(&th->phi->mprint);
 		printf("%lld %d is thinking\n", now(th->st), th->id);
 		pthread_mutex_unlock(&th->phi->mprint);
+		my_sleep(time_ms(), 1);
 	}
 	if (th->ec == th->phi->npe)
 	{

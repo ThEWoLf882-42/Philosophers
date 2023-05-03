@@ -22,18 +22,22 @@ void	take_forks(t_th *th)
 	if(!(th->id % 2))
 	{
 		pthread_mutex_lock(&forks[id]);
-		pthread_mutex_lock(&forks[(id + 1) % th->phi->nph]);
 		pthread_mutex_lock(&th->phi->mprint);
 		printf("%lld %d has taken a fork\n", now(th->st), id + 1);
+		pthread_mutex_unlock(&th->phi->mprint);
+		pthread_mutex_lock(&forks[(id + 1) % th->phi->nph]);
+		pthread_mutex_lock(&th->phi->mprint);
 		printf("%lld %d has taken a fork\n", now(th->st), id + 1);
 		pthread_mutex_unlock(&th->phi->mprint);
 	}
 	else
 	{
 		pthread_mutex_lock(&forks[(id + 1) % th->phi->nph]);
-		pthread_mutex_lock(&forks[id]);
 		pthread_mutex_lock(&th->phi->mprint);
 		printf("%lld %d has taken a fork\n", now(th->st), id + 1);
+		pthread_mutex_unlock(&th->phi->mprint);
+		pthread_mutex_lock(&forks[id]);
+		pthread_mutex_lock(&th->phi->mprint);
 		printf("%lld %d has taken a fork\n", now(th->st), id + 1);
 		pthread_mutex_unlock(&th->phi->mprint);
 	}
