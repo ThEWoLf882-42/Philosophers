@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agimi <agimi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:20:25 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/05 12:34:26 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/05 16:55:25 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ typedef struct philo
 	int					*id;
 	pthread_mutex_t		mdone;
 	pthread_mutex_t		mprint;
-	pthread_mutex_t		*fork;
+	pthread_mutex_t		fork[200];
 	t_th				*th;
 }	t_phi;
 
 int		ft_atoi(char *str);
 int		ft_isspace(int c);
 int		ft_issnu(char *s);
-void	set_arg(t_phi *phi,int ac, char **av);
+void	set_arg(t_phi *phi, int ac, char **av);
 void	set_forks(t_phi	*phi);
 void	create_thread(t_phi *phi);
 void	*thread(void *arg);

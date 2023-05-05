@@ -3,20 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   mon.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agimi <agimi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 16:25:24 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/05 12:27:13 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/05 16:54:06 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-void	freemon(t_phi *phi)
-{
-	free(phi->fork);
-	free(phi);
-}
 
 void	*mon(void *arg)
 {
@@ -35,13 +29,13 @@ void	*mon(void *arg)
 				printf("%zu %d died\n", now(th->st), th->id);
 				pthread_mutex_unlock(&phi->mprint);
 				phi->dead = 1;
-				freemon(phi);
+				free(phi);
 				exit(0);
 			}
 			th = th->next;
 		}
 		th = phi->th;
 	}
-	freemon(phi);
+	free(phi);
 	return (NULL);
 }
