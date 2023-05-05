@@ -1,7 +1,7 @@
 NAME = philo
 
 CC = cc
-FLAGS = -Wall -Wextra -Werror -pthread
+FLAGS = -Wall -Wextra -Werror -pthread 
 INCLUDES = -I$(HEADERS_DIRECTORY)
 
 HEADERS_LIST = philo.h
@@ -20,6 +20,8 @@ SOURCES_LIST =	create_mon.c \
 				philo.c \
 				set_arg.c \
 				set_forks.c \
+				sleeping.c \
+				think.c \
 				thread.c \
 				time_ms.c \
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   thread.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
+/*   By: agimi <agimi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 14:48:25 by agimi             #+#    #+#             */
-/*   Updated: 2023/03/28 14:48:25 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/05 12:35:07 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,9 @@ void	*thread(void *arg)
 	while (th->ec != th->phi->npe && !th->phi->dead)
 	{
 		eat(th);
-		pthread_mutex_lock(&th->phi->mprint);
-		printf("%lld %d is sleeping\n", now(th->st), th->id);
-		pthread_mutex_unlock(&th->phi->mprint);
+		sleeping(th);
 		my_sleep(time_ms(), th->phi->ts);
-		pthread_mutex_lock(&th->phi->mprint);
-		printf("%lld %d is thinking\n", now(th->st), th->id);
-		pthread_mutex_unlock(&th->phi->mprint);
+		think(th);
 		my_sleep(time_ms(), 1);
 	}
 	if (th->ec == th->phi->npe)
@@ -39,5 +35,6 @@ void	*thread(void *arg)
 		th->phi->done++;
 		pthread_mutex_unlock(&th->phi->mdone);
 	}
+	free(th);
 	return (NULL);
 }

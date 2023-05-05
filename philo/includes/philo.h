@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
+/*   By: agimi <agimi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:20:25 by agimi             #+#    #+#             */
-/*   Updated: 2023/03/27 16:20:25 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/05 12:34:26 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,7 @@ void	eat(t_th *th);
 void	take_forks(t_th *th);
 void	create_mon(t_phi *phi);
 void	*mon(void *arg);
+void	sleeping(t_th *th);
+void	think(t_th *th);
 
 #endif

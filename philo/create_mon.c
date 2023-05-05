@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_mon.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
+/*   By: agimi <agimi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 16:19:54 by agimi             #+#    #+#             */
-/*   Updated: 2023/04/05 16:19:54 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/05 10:54:56 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ void	create_mon(t_phi *phi)
 	pthread_attr_init(&dmo);
 	pthread_attr_setdetachstate(&dmo, PTHREAD_CREATE_DETACHED);
 	if (pthread_create(&mo, &dmo, &mon, phi))
-			perror("Creation of MON Failed");
+		perror("Creation of MON Failed");
 }
