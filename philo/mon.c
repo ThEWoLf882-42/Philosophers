@@ -6,7 +6,7 @@
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 16:25:24 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/05 16:54:06 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/05 17:44:50 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	*mon(void *arg)
 				pthread_mutex_unlock(&phi->mprint);
 				phi->dead = 1;
 				free(phi);
-				exit(0);
+				return (NULL);
 			}
 			th = th->next;
 		}

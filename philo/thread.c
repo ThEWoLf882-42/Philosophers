@@ -6,7 +6,7 @@
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 14:48:25 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/05 16:55:11 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/05 18:57:02 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	*thread(void *arg)
 		sleeping(th);
 		my_sleep(time_ms(), th->phi->ts);
 		think(th);
-		my_sleep(time_ms(), 1);
+		usleep(250);
 	}
 	if (th->ec == th->phi->npe)
 	{

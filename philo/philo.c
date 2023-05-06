@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agimi <agimi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 13:25:38 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/05 11:36:54 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/05 17:36:37 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,4 @@ int	main(int ac, char **av)
 	}
 	else
 		printf("Please enter 4/5 Argument\n");
-	pthread_exit(0);
 }
