@@ -11,7 +11,9 @@ HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
 SOURCES_DIRECTORY = ./
 SOURCES_LIST =	create_mon.c \
 				create_thread.c \
+				died.c \
 				eat.c \
+				forking.c \
 				ft_atoi.c \
 				ft_is.c \
 				mon.c \
