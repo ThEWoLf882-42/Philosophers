@@ -6,11 +6,26 @@
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 14:48:25 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/07 14:05:13 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/07 15:37:41 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+void	the_free(t_th *th)
+{
+	while (1)
+	{
+		pthread_mutex_lock(&th->phi->mdone);
+		if (th->phi->done == th->phi->nph)
+		{
+			pthread_mutex_unlock(&th->phi->mdone);
+			break ;
+		}
+		pthread_mutex_unlock(&th->phi->mdone);
+	}
+	free(th);
+}
 
 void	done(t_th *th)
 {
@@ -73,6 +88,6 @@ void	*thread(void *arg)
 		usleep(250);
 	}
 	done(th);
-	free(th);
+	the_free(th);
 	return (NULL);
 }

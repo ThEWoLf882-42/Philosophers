@@ -6,7 +6,7 @@
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 13:25:38 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/05 17:36:37 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/07 16:39:28 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,23 @@ int	main(int ac, char **av)
 	if (ac == 5 || ac == 6)
 	{
 		phi = malloc(sizeof(t_phi));
+		if (!check_arg(av))
+		{
+			free(phi);
+			return (0);
+		}
 		set_arg(phi, ac, av);
 		set_forks(phi);
-		create_thread(phi);
-		create_mon(phi);
+		if (!create_thread(phi))
+		{
+			free(phi);
+			return (0);
+		}
+		if (!create_mon(phi))
+		{
+			free(phi);
+			return (0);
+		}
 	}
 	else
 		printf("Please enter 4/5 Argument\n");

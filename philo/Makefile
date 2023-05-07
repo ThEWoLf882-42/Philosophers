@@ -9,7 +9,8 @@ HEADERS_DIRECTORY = ./includes/
 HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
 
 SOURCES_DIRECTORY = ./
-SOURCES_LIST =	create_mon.c \
+SOURCES_LIST =	check_arg.c \
+				create_mon.c \
 				create_thread.c \
 				died.c \
 				eat.c \

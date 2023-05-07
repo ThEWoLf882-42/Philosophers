@@ -6,7 +6,7 @@
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 13:29:56 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/05 16:55:47 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/07 16:17:26 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_isspace(int c)
 	return (0);
 }
 
-int	ft_issnu(char *s)
+int	ft_isnu(char *s)
 {
 	int	i;
 

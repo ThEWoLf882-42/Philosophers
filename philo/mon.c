@@ -6,11 +6,23 @@
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 16:25:24 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/07 14:05:03 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/07 15:34:10 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+int	tdone(t_phi *phi)
+{
+	pthread_mutex_lock(&phi->mdone);
+	if (phi->done == phi->nph)
+	{
+		pthread_mutex_unlock(&phi->mdone);
+		return (1);
+	}
+	pthread_mutex_unlock(&phi->mdone);
+	return (0);
+}
 
 int	sded(t_phi *phi, t_th *th)
 {
@@ -41,8 +53,10 @@ void	*mon(void *arg)
 
 	phi = (t_phi *)arg;
 	th = phi->th;
-	while (phi->done != phi->nph)
+	while (1)
 	{
+		if (tdone(phi))
+			break ;
 		while (th)
 		{
 			if (sded(phi, th))
