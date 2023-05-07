@@ -6,7 +6,7 @@
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:07:20 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/06 12:33:38 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/06 13:11:03 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,13 @@ void	unlock_fork(t_th *th)
 void	eat(t_th *th)
 {
 	take_forks(th);
+	pthread_mutex_lock(&th->phi->mle);
 	th->le = time_ms();
+	pthread_mutex_unlock(&th->phi->mle);
 	eating(th);
 	my_sleep(time_ms(), th->phi->te);
 	unlock_fork(th);
+	pthread_mutex_lock(&th->phi->mec);
 	th->ec++;
+	pthread_mutex_unlock(&th->phi->mec);
 }

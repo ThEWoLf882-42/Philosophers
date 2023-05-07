@@ -1,7 +1,7 @@
 NAME = philo
 
 CC = cc
-FLAGS = -Wall -Wextra -Werror -pthread
+FLAGS = -Wall -Wextra -Werror -pthread #-fsanitize=thread -g
 INCLUDES = -I$(HEADERS_DIRECTORY)
 
 HEADERS_LIST = philo.h

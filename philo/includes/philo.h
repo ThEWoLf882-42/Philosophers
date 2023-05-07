@@ -6,7 +6,7 @@
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:20:25 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/06 12:37:59 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/06 13:08:56 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ typedef struct philo
 	int					dead;
 	int					done;
 	int					*id;
+	pthread_mutex_t		mec;
+	pthread_mutex_t		mdead;
+	pthread_mutex_t		mle;
 	pthread_mutex_t		mdone;
 	pthread_mutex_t		mprint;
 	pthread_mutex_t		fork[200];
