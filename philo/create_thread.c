@@ -6,7 +6,7 @@
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 14:43:30 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/07 13:26:42 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/07 13:38:22 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ void	create_thread(t_phi *phi)
 		thr = new_th(phi, i + 1);
 		if (pthread_create(&th[i], NULL, &thread, thr))
 			perror("Creation of TH Failed");
+		pthread_detach(th[i]);
 	}
 }
