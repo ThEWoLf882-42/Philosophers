@@ -6,7 +6,7 @@
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 14:48:25 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/06 17:43:36 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/07 14:05:13 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,26 @@
 
 void	done(t_th *th)
 {
-	pthread_mutex_lock(&th->phi->mec);
+	pthread_mutex_lock(&th->phi->mec[th->i]);
 	if (th->ec == th->phi->npe)
 	{
 		pthread_mutex_lock(&th->phi->mdone);
 		th->phi->done++;
 		pthread_mutex_unlock(&th->phi->mdone);
-		pthread_mutex_unlock(&th->phi->mec);
+		pthread_mutex_unlock(&th->phi->mec[th->i]);
 	}
-	pthread_mutex_unlock(&th->phi->mec);
+	pthread_mutex_unlock(&th->phi->mec[th->i]);
 }
 
 int	tec(t_th *th)
 {
-	pthread_mutex_lock(&th->phi->mec);
+	pthread_mutex_lock(&th->phi->mec[th->i]);
 	if (th->ec == th->phi->npe)
 	{
-		pthread_mutex_unlock(&th->phi->mec);
+		pthread_mutex_unlock(&th->phi->mec[th->i]);
 		return (1);
 	}
-	pthread_mutex_unlock(&th->phi->mec);
+	pthread_mutex_unlock(&th->phi->mec[th->i]);
 	return (0);
 }
 
@@ -55,9 +55,9 @@ void	*thread(void *arg)
 
 	th = (t_th *)arg;
 	th->st = time_ms();
-	pthread_mutex_lock(&th->phi->mle);
+	pthread_mutex_lock(&th->phi->mle[th->i]);
 	th->le = th->st;
-	pthread_mutex_unlock(&th->phi->mle);
+	pthread_mutex_unlock(&th->phi->mle[th->i]);
 	if (!(th->id % 2))
 		my_sleep(time_ms(), th->phi->te / 2);
 	while (1)

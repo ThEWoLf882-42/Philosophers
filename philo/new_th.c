@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_th.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agimi <agimi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 14:23:10 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/05 11:36:49 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/07 14:01:02 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ t_th	*new_th(t_phi *phi, int id)
 	if (!th)
 		return (NULL);
 	th->id = id;
+	th->i = id - 1;
 	th->phi = phi;
 	th->ec = 0;
 	th->next = NULL;

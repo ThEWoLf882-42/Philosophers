@@ -6,7 +6,7 @@
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:20:25 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/06 13:08:56 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/07 14:02:23 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct th
 	size_t			st;
 	size_t			le;
 	int				id;
+	int				i;
 	int				ec;
 	struct philo	*phi;
 	struct th		*next;
@@ -41,12 +42,12 @@ typedef struct philo
 	int					dead;
 	int					done;
 	int					*id;
-	pthread_mutex_t		mec;
-	pthread_mutex_t		mdead;
-	pthread_mutex_t		mle;
+	pthread_mutex_t		fork[200];
+	pthread_mutex_t		mec[200];
+	pthread_mutex_t		mle[200];
 	pthread_mutex_t		mdone;
 	pthread_mutex_t		mprint;
-	pthread_mutex_t		fork[200];
+	pthread_mutex_t		mdead;
 	t_th				*th;
 }	t_phi;
 
