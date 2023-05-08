@@ -6,7 +6,7 @@
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 16:25:24 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/07 15:34:10 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/08 12:15:59 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,13 @@ void	*mon(void *arg)
 		{
 			if (sded(phi, th))
 			{
-				free (phi);
+				// free (phi);
 				return (NULL);
 			}
 			th = th->next;
 		}
 		th = phi->th;
 	}
-	free(phi);
+	// free(phi);
 	return (NULL);
 }

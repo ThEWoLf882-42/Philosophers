@@ -24,6 +24,7 @@ SOURCES_LIST =	check_arg.c \
 				set_arg.c \
 				set_forks.c \
 				sleeping.c \
+				the_free.c \
 				think.c \
 				thread.c \
 				time_ms.c \

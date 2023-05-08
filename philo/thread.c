@@ -6,7 +6,7 @@
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 14:48:25 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/07 19:24:05 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/08 12:15:47 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,6 @@ void	*thread(void *arg)
 		usleep(250);
 	}
 	done(th);
-	the_free(th);
+	// the_free(th);
 	return (NULL);
 }

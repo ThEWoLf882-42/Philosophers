@@ -1,43 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   the_free.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/28 13:25:38 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/08 12:20:20 by agimi            ###   ########.fr       */
+/*   Created: 2023/05/08 12:20:32 by agimi             #+#    #+#             */
+/*   Updated: 2023/05/08 12:25:08 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	main(int ac, char **av)
+void	the_free(t_phi *phi)
 {
-	t_phi	*phi;
+	t_th	*th;
+	t_th	*tht;
 
-	if (ac == 5 || ac == 6)
+	th = phi->th;
+	while (th)
 	{
-		phi = malloc(sizeof(t_phi));
-		if (!check_arg(av))
-		{
-			free(phi);
-			return (0);
-		}
-		set_arg(phi, ac, av);
-		set_forks(phi);
-		if (!create_thread(phi))
-		{
-			free(phi);
-			return (0);
-		}
-		if (!create_mon(phi))
-		{
-			free(phi);
-			return (0);
-		}
-		the_free(phi);
+		tht = th->next;
+		free(th);
+		th = tht;
 	}
-	else
-		printf("Please enter 4/5 Argument\n");
+	free(phi);
 }
