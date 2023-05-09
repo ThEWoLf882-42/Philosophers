@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_mon.c                                       :+:      :+:    :+:   */
+/*   philo_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/05 16:19:54 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/09 11:57:55 by agimi            ###   ########.fr       */
+/*   Created: 2023/05/09 11:48:59 by agimi             #+#    #+#             */
+/*   Updated: 2023/05/09 12:11:53 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "philo_bonus.h"
 
-int	create_mon(t_phi *phi)
+int	main(int ac, char **av)
 {
-	pthread_t		mo;
+	t_phi	*phi;
 
-	if (pthread_create(&mo, NULL, &mon, phi))
+	if (ac == 5 || ac == 6)
 	{
-		printf("Creation of MON Failed");
-		free(phi);
-		return (0);
+		phi = malloc(sizeof(t_phi));
+		if (!!check_arg(av, phi))
+			return (1);
+		set_arg(phi, ac, av);
+		set_forks(phi);
 	}
-	if (pthread_join(mo, NULL))
-	{
-		printf("Joining of MON Failed");
-		free(phi);
-		return (0);
-	}
-	return (1);
+	else
+		printf("Please enter 4/5 Argument\n");
 }

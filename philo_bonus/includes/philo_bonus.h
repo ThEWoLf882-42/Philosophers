@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_mon.c                                       :+:      :+:    :+:   */
+/*   philo_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/05 16:19:54 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/09 11:57:55 by agimi            ###   ########.fr       */
+/*   Created: 2023/05/09 11:48:56 by agimi             #+#    #+#             */
+/*   Updated: 2023/05/09 12:11:21 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#ifndef PHILO_BONUS_H
+# define PHILO_BONUS_H
 
-int	create_mon(t_phi *phi)
+# include <pthread.h>
+# include <stdio.h>
+# include <sys/time.h>
+# include <string.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <semaphore.h>
+
+typedef struct philo
 {
-	pthread_t		mo;
+	int		nph;
+	int		td;
+	int		te;
+	int		ts;
+	int		npe;
+	sem_t	fork;
+}	t_phi;
 
-	if (pthread_create(&mo, NULL, &mon, phi))
-	{
-		printf("Creation of MON Failed");
-		free(phi);
-		return (0);
-	}
-	if (pthread_join(mo, NULL))
-	{
-		printf("Joining of MON Failed");
-		free(phi);
-		return (0);
-	}
-	return (1);
-}
+
+int		check_arg(char **av, t_phi *phi);
+void	set_arg(t_phi *phi, int ac, char **av);
+
+#endif

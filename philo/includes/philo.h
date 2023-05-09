@@ -6,7 +6,7 @@
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:20:25 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/07 19:24:27 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/09 11:59:16 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	sleeping(t_th *th);
 void	think(t_th *th);
 void	forking(t_th *th, int id);
 void	died(t_phi *phi, t_th *th);
-int		check_arg(char **av);
+int		check_arg(char **av, t_phi *phi);
+void	the_free(t_phi *phi);
 
 #endif
