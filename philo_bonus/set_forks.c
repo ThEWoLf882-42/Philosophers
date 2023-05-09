@@ -6,7 +6,7 @@
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 12:12:37 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/09 12:14:27 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/09 12:30:38 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,4 +15,5 @@
 void	set_forks(t_phi	*phi)
 {
 	sem_init(&phi->fork, 1, phi->nph);
+	sem_init(&phi->print, 1, 1);
 }

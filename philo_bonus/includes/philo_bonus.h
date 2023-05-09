@@ -6,7 +6,7 @@
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:48:56 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/09 12:11:21 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/09 12:30:19 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct philo
 	int		ts;
 	int		npe;
 	sem_t	fork;
+	sem_t	print;
 }	t_phi;
 
 
