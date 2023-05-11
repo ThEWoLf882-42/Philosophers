@@ -10,6 +10,9 @@ HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
 
 SOURCES_DIRECTORY = ./
 SOURCES_LIST =	check_arg.c \
+				forking.c \
+				ft_atoi.c \
+				ft_is.c \
 				philo_bonus.c \
 				set_arg.c \
 				set_forks.c \

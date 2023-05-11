@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo_bonus.c                                      :+:      :+:    :+:   */
+/*   ft_is.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/09 11:48:59 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/10 19:34:30 by agimi            ###   ########.fr       */
+/*   Created: 2023/05/10 19:29:04 by agimi             #+#    #+#             */
+/*   Updated: 2023/05/10 19:29:05 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
 
-int	main(int ac, char **av)
+int	ft_isspace(int c)
 {
-	t_phi	*phi;
+	if ((c == ' ' || c == '\t' || c == '\v'
+			|| c == '\n' || c == '\f' || c == '\r'))
+		return (1);
+	return (0);
+}
 
-	if (ac == 5 || ac == 6)
-	{
-		phi = malloc(sizeof(t_phi));
-		if (!check_arg(av, phi))
-			return (1);
-		set_arg(phi, ac, av);
-		if (!set_forks(phi))
-			return (1);
-		forking(phi);
-	}
-	else
-		printf("Please enter 4/5 Argument\n");
+int	ft_isnu(char *s)
+{
+	int	i;
+
+	i = -1;
+	while (s[++i])
+		if (s[i] < '0' || s[i] > '9')
+			return (0);
+	return (1);
 }

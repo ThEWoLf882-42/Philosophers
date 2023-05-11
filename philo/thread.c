@@ -6,7 +6,7 @@
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 14:48:25 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/10 12:42:24 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/10 18:31:00 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ void	*thread(void *arg)
 	th->st = time_ms();
 	pthread_mutex_lock(&th->phi->mle[th->i]);
 	th->le = th->st;
-	think(th);
 	pthread_mutex_unlock(&th->phi->mle[th->i]);
+	think(th);
 	if (!(th->id % 2))
 		my_sleep(time_ms(), th->phi->te / 2);
 	while (1)
