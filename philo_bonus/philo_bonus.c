@@ -6,7 +6,7 @@
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:48:59 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/13 13:21:52 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/13 16:26:15 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,19 @@ int	main(int ac, char **av)
 			return (1);
 		set_arg(phi, ac, av);
 		if (!set_forks(phi))
-			return (1);
-		if (!forking(phi))
 		{
 			free(phi);
 			return (1);
 		}
+		if (!forking(phi))
+		{
+			free(phi->pid);
+			free(phi);
+			return (1);
+		}
+		murder2(phi);
+		free(phi->pid);
+		free(phi);
 	}
 	else
 		printf("Please enter 4/5 Argument\n");

@@ -6,7 +6,7 @@
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:48:56 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/13 15:26:16 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/13 16:26:04 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <semaphore.h>
+# include <signal.h>
 
 typedef struct philo_bonus
 {
@@ -40,9 +41,9 @@ typedef struct philo
 	int			npe;
 	pid_t		*pid;
 	sem_t		*fork;
-	sem_t		print;
-	sem_t		end;
-	sem_t		sec;
+	sem_t		*print;
+	sem_t		*end;
+	sem_t		*sec;
 	t_th		th;
 }	t_phi;
 
@@ -59,7 +60,8 @@ size_t	now(size_t st);
 void	tfork(t_phi	*phi);
 void	eat(t_phi *phi);
 void	thread(t_phi *phi);
-void	murder(t_phi *phi, int i);
+void	murder1(t_phi *phi, int i);
+void	murder2(t_phi *phi);
 void	sleeping(t_phi *phi);
 void	thinking(t_phi *phi);
 int		eat_checker(t_phi *phi);

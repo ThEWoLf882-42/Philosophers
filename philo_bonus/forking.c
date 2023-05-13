@@ -6,7 +6,7 @@
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 19:13:48 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/13 15:06:51 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/13 16:23:41 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,15 @@ int	forking(t_phi	*phi)
 		phi->pid[i] = fork();
 		if (phi->pid[i] == -1)
 		{
-			murder(phi, i);
+			murder1(phi, i);
 			return (0);
 		}
-		if (phi->pid[i] == 0)
+		else if (phi->pid[i] == 0)
 		{
 			death_checker(phi);
 			thread(phi);
 		}
 	}
 	sem_wait(phi->end);
-	pause();
+	return (1);
 }

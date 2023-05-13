@@ -6,7 +6,7 @@
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 14:30:16 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/13 15:23:21 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/13 16:21:24 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*eat_check(void *arg)
 	phi = (t_phi *)arg;
 	i = -1;
 	sem_wait(phi->print);
-	while (++i < phi->npe)
+	while (++i < phi->nph)
 	{
 		sem_post(phi->print);
 		sem_wait(phi->sec);
@@ -32,10 +32,14 @@ void	*eat_check(void *arg)
 
 int	eat_checker(t_phi *phi)
 {
-	if (pthread_create(&phi->checker, NULL, &eat_check, phi))
+	if (phi->npe > 0)
 	{
-		printf("Creation of Checker E Failed\n");
-		return (0);
+		if (pthread_create(&phi->checker, NULL, &eat_check, phi))
+		{
+			printf("Creation of Checker E Failed\n");
+			return (0);
+		}
+		pthread_detach(phi->checker);
 	}
-	pthread_detach(phi->checker);
+	return (1);
 }

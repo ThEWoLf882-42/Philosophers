@@ -11,7 +11,7 @@ HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
 SOURCES_DIRECTORY = ./
 SOURCES_LIST =	check_arg.c \
 				death_checker.c \
-				eat_checker.c
+				eat_checker.c \
 				eat.c \
 				forking.c \
 				ft_atoi.c \

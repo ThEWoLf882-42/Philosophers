@@ -6,7 +6,7 @@
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 15:07:05 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/13 15:24:13 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/13 16:24:14 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*death_check(void *arg)
 	phi = (t_phi *)arg;
 	while (1)
 	{
-		if (now(phi->th.le) > phi->td)
+		if (now(phi->th.le) > (size_t)phi->td)
 		{
 			sem_wait(phi->print);
 			printf("%zu %d died\n", now(phi->st), phi->th.id);
@@ -33,10 +33,10 @@ void	*death_check(void *arg)
 void	death_checker(t_phi *phi)
 {
 	phi->th.le = time_ms();
-	if (pthread_create(&phi->th.checker, NULL, &death_check, phi))
+	if (pthread_create(&phi->checker, NULL, &death_check, phi))
 	{
 		printf("Creation of Checker D Failed\n");
 		sem_post(phi->end);
 	}
-	pthread_detach(phi->th.checker);
+	pthread_detach(phi->checker);
 }
