@@ -1,35 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo_bonus.c                                      :+:      :+:    :+:   */
+/*   death_checker.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/09 11:48:59 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/13 13:21:52 by agimi            ###   ########.fr       */
+/*   Created: 2023/05/13 15:07:05 by agimi             #+#    #+#             */
+/*   Updated: 2023/05/13 15:24:13 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
 
-int	main(int ac, char **av)
+void	*death_check(void *arg)
 {
 	t_phi	*phi;
 
-	if (ac == 5 || ac == 6)
+	phi = (t_phi *)arg;
+	while (1)
 	{
-		phi = malloc(sizeof(t_phi));
-		if (!check_arg(av, phi))
-			return (1);
-		set_arg(phi, ac, av);
-		if (!set_forks(phi))
-			return (1);
-		if (!forking(phi))
+		if (now(phi->th.le) > phi->td)
 		{
-			free(phi);
-			return (1);
+			sem_wait(phi->print);
+			printf("%zu %d died\n", now(phi->st), phi->th.id);
+			sem_post(phi->end);
+			exit(0);
 		}
 	}
-	else
-		printf("Please enter 4/5 Argument\n");
+	return (NULL);
+}
+
+void	death_checker(t_phi *phi)
+{
+	phi->th.le = time_ms();
+	if (pthread_create(&phi->th.checker, NULL, &death_check, phi))
+	{
+		printf("Creation of Checker D Failed\n");
+		sem_post(phi->end);
+	}
+	pthread_detach(phi->th.checker);
 }

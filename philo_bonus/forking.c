@@ -6,23 +6,34 @@
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 19:13:48 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/10 19:43:21 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/13 15:06:51 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
 
-void	forking(t_phi	*phi)
+int	forking(t_phi	*phi)
 {
 	int		i;
 
 	i = -1;
+	phi->st = time_ms();
 	phi->pid = malloc(sizeof(pid_t) * phi->nph);
 	while (++i < phi->nph)
 	{
+		phi->th.id = i + 1;
 		phi->pid[i] = fork();
-		if (phi->pid[i] != 0)
-			printf("pid[%d]: %d\n", i, phi->pid[i]);
+		if (phi->pid[i] == -1)
+		{
+			murder(phi, i);
+			return (0);
+		}
+		if (phi->pid[i] == 0)
+		{
+			death_checker(phi);
+			thread(phi);
+		}
 	}
+	sem_wait(phi->end);
 	pause();
 }

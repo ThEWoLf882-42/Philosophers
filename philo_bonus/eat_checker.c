@@ -1,32 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_mon.c                                       :+:      :+:    :+:   */
+/*   eat_checker.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/05 16:19:54 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/13 14:35:14 by agimi            ###   ########.fr       */
+/*   Created: 2023/05/13 14:30:16 by agimi             #+#    #+#             */
+/*   Updated: 2023/05/13 15:23:21 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "philo_bonus.h"
 
-int	create_mon(t_phi *phi)
+void	*eat_check(void *arg)
 {
-	pthread_t		mo;
+	t_phi	*phi;
+	int		i;
 
-	if (pthread_create(&mo, NULL, &mon, phi))
+	phi = (t_phi *)arg;
+	i = -1;
+	sem_wait(phi->print);
+	while (++i < phi->npe)
 	{
-		printf("Creation of MON Failed\n");
-		free(phi);
+		sem_post(phi->print);
+		sem_wait(phi->sec);
+		sem_wait(phi->print);
+	}
+	sem_post(phi->end);
+	return (NULL);
+}
+
+int	eat_checker(t_phi *phi)
+{
+	if (pthread_create(&phi->checker, NULL, &eat_check, phi))
+	{
+		printf("Creation of Checker E Failed\n");
 		return (0);
 	}
-	if (pthread_join(mo, NULL))
-	{
-		printf("Joining of MON Failed\n");
-		free(phi);
-		return (0);
-	}
-	return (1);
+	pthread_detach(phi->checker);
 }

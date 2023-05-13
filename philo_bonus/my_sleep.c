@@ -1,32 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_mon.c                                       :+:      :+:    :+:   */
+/*   my_sleep.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/05 16:19:54 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/13 14:35:14 by agimi            ###   ########.fr       */
+/*   Created: 2023/05/11 12:52:25 by agimi             #+#    #+#             */
+/*   Updated: 2023/05/12 11:40:18 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "philo_bonus.h"
 
-int	create_mon(t_phi *phi)
+void	my_sleep(size_t	now, int ms)
 {
-	pthread_t		mo;
-
-	if (pthread_create(&mo, NULL, &mon, phi))
-	{
-		printf("Creation of MON Failed\n");
-		free(phi);
-		return (0);
-	}
-	if (pthread_join(mo, NULL))
-	{
-		printf("Joining of MON Failed\n");
-		free(phi);
-		return (0);
-	}
-	return (1);
+	while ((time_ms() - now) < (size_t)ms)
+		usleep(ms);
 }

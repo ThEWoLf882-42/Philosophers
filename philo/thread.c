@@ -6,7 +6,7 @@
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 14:48:25 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/10 18:31:00 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/12 11:22:22 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ void	*thread(void *arg)
 		sleeping(th);
 		my_sleep(time_ms(), th->phi->ts);
 		think(th);
-		usleep(250);
 	}
 	done(th);
 	return (NULL);

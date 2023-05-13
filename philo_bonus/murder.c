@@ -1,32 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_mon.c                                       :+:      :+:    :+:   */
+/*   murder.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/05 16:19:54 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/13 14:35:14 by agimi            ###   ########.fr       */
+/*   Created: 2023/05/13 13:11:27 by agimi             #+#    #+#             */
+/*   Updated: 2023/05/13 13:15:27 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "philo_bonus.h"
 
-int	create_mon(t_phi *phi)
+void	murder(t_phi *phi, int i)
 {
-	pthread_t		mo;
-
-	if (pthread_create(&mo, NULL, &mon, phi))
-	{
-		printf("Creation of MON Failed\n");
-		free(phi);
-		return (0);
-	}
-	if (pthread_join(mo, NULL))
-	{
-		printf("Joining of MON Failed\n");
-		free(phi);
-		return (0);
-	}
-	return (1);
+	while (--i > -1)
+		kill(phi->pid[i], SIGKILL);
 }

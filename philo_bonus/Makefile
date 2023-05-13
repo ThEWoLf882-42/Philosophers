@@ -10,12 +10,22 @@ HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
 
 SOURCES_DIRECTORY = ./
 SOURCES_LIST =	check_arg.c \
+				death_checker.c \
+				eat_checker.c
+				eat.c \
 				forking.c \
 				ft_atoi.c \
 				ft_is.c \
+				murder.c \
+				my_sleep.c \
 				philo_bonus.c \
 				set_arg.c \
 				set_forks.c \
+				sleeping.c \
+				tfork.c \
+				thinking.c \
+				thread.c \
+				time_ms.c \
 
 SOURCES = $(addprefix $(SOURCES_DIRECTORY), $(SOURCES_LIST))
 

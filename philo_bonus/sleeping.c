@@ -1,32 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_mon.c                                       :+:      :+:    :+:   */
+/*   sleeping.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/05 16:19:54 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/13 14:35:14 by agimi            ###   ########.fr       */
+/*   Created: 2023/05/11 13:07:05 by agimi             #+#    #+#             */
+/*   Updated: 2023/05/13 14:23:45 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "philo_bonus.h"
 
-int	create_mon(t_phi *phi)
+void	sleeping(t_phi *phi)
 {
-	pthread_t		mo;
-
-	if (pthread_create(&mo, NULL, &mon, phi))
-	{
-		printf("Creation of MON Failed\n");
-		free(phi);
-		return (0);
-	}
-	if (pthread_join(mo, NULL))
-	{
-		printf("Joining of MON Failed\n");
-		free(phi);
-		return (0);
-	}
-	return (1);
+	sem_wait(phi->print);
+	printf("%zu %d is sleeping\n", now(phi->st), phi->th.id);
+	sem_post(phi->print);
+	my_sleep(time_ms(), phi->ts);
 }
