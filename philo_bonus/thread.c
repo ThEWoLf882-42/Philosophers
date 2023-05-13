@@ -6,7 +6,7 @@
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 13:42:15 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/13 16:32:42 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/13 16:33:36 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	thread(t_phi *phi)
 		eat(phi);
 		sleeping(phi);
 		thinking(phi);
-		usleep(10);
 		if (phi->th.ec == phi->npe)
 		{
 			sem_post(phi->sec);
