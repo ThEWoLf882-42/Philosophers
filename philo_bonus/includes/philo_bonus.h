@@ -6,7 +6,7 @@
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:48:56 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/13 16:26:04 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/15 16:02:09 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <pthread.h>
 # include <stdio.h>
 # include <sys/time.h>
-# include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <semaphore.h>

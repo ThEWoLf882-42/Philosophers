@@ -6,7 +6,7 @@
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 15:07:05 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/13 16:24:14 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/15 16:33:54 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	*death_check(void *arg)
 	phi = (t_phi *)arg;
 	while (1)
 	{
-		if (now(phi->th.le) > (size_t)phi->td)
+		if ((int)now(phi->th.le) >= phi->td)
 		{
 			sem_wait(phi->print);
-			printf("%zu %d died\n", now(phi->st), phi->th.id);
+			printf("%ld %d died\n", now(phi->st), phi->th.id);
 			sem_post(phi->end);
 			exit(0);
 		}

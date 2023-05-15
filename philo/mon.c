@@ -6,7 +6,7 @@
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 16:25:24 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/12 11:40:18 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/15 16:22:19 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ int	sded(t_phi *phi, t_th *th)
 	if (th->ec != th->phi->npe)
 	{
 		pthread_mutex_lock(&phi->mle[th->i]);
-		if (now(th->le) > (size_t)phi->td)
+		if ((int)now(th->le) >= phi->td)
 		{
-			died(phi, th);
 			pthread_mutex_lock(&phi->mdead);
 			phi->dead = 1;
 			pthread_mutex_unlock(&phi->mdead);
-			pthread_mutex_unlock(&phi->mec[th->i]);
+			died(phi, th);
 			pthread_mutex_unlock(&phi->mle[th->i]);
+			pthread_mutex_unlock(&phi->mec[th->i]);
 			return (1);
 		}
 		pthread_mutex_unlock(&phi->mle[th->i]);
@@ -56,7 +56,7 @@ void	*mon(void *arg)
 	while (1)
 	{
 		if (tdone(phi))
-			break ;
+			return (NULL);
 		while (th)
 		{
 			if (sded(phi, th))

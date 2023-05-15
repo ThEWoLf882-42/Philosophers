@@ -6,7 +6,7 @@
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 14:48:25 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/12 11:22:22 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/15 15:32:44 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,7 @@ void	*thread(void *arg)
 		my_sleep(time_ms(), th->phi->te / 2);
 	while (1)
 	{
-		if (tdead(th))
-			break ;
-		if (tec(th))
+		if (tdead(th) || tec(th))
 			break ;
 		eat(th);
 		sleeping(th);
