@@ -6,7 +6,7 @@
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 12:12:37 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/13 15:44:30 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/16 11:35:15 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,11 @@ int	set_forks(t_phi	*phi)
 	sem_unlink("/print");
 	sem_unlink("/end");
 	sem_unlink("/ec");
+	sem_unlink("/start");
 	phi->fork = sem_open("/fork", O_CREAT, 0644, phi->nph);
 	phi->print = sem_open("/print", O_CREAT, 0644, 1);
 	phi->end = sem_open("/end", O_CREAT, 0644, 0);
+	phi->start = sem_open("/start", O_CREAT, 0644, 0);
 	if (phi->npe != -1)
 	{
 		phi->sec = sem_open("/ec", O_CREAT, 0644, 0);
@@ -28,7 +30,7 @@ int	set_forks(t_phi	*phi)
 			return (0);
 	}
 	if (phi->fork == SEM_FAILED || phi->print == SEM_FAILED
-		|| phi->end == SEM_FAILED)
+		|| phi->end == SEM_FAILED || phi->start == SEM_FAILED)
 		return (0);
 	if (!eat_checker(phi))
 		return (0);

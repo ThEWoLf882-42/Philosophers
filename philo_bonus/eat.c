@@ -6,7 +6,7 @@
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 12:56:30 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/15 16:11:41 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/17 16:38:07 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	eating(t_phi	*phi)
 {
 	sem_wait(phi->print);
-	printf("%ld %d is eating\n", now(phi->st), phi->th.id);
+	printf("%zu %d is eating\n", now(phi->std), phi->th.id);
 	sem_post(phi->print);
 }
 

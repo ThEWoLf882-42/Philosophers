@@ -6,7 +6,7 @@
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 13:42:15 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/13 16:46:32 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/17 16:50:01 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 void	thread(t_phi *phi)
 {
-	phi->st = time_ms();
+	while (time_ms() < phi->std)
+		usleep(phi->td);
 	thinking(phi);
 	while (1)
 	{
-		eat(phi);
-		sleeping(phi);
 		if (phi->th.ec == phi->npe)
 			sem_post(phi->sec);
+		eat(phi);
+		sleeping(phi);
 		thinking(phi);
 	}
 }
-

@@ -6,7 +6,7 @@
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:07:20 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/15 16:11:23 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/16 10:53:52 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	eating(t_th *th)
 	if (!th->phi->dead)
 	{
 		pthread_mutex_lock(&th->phi->mprint);
-		printf("%ld %d is eating\n", now(th->st), th->id);
+		printf("%zu %d is eating\n", now(th->st), th->id);
 		pthread_mutex_unlock(&th->phi->mprint);
 	}
 	pthread_mutex_unlock(&th->phi->mdead);

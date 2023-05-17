@@ -6,7 +6,7 @@
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:48:56 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/15 16:02:09 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/17 15:10:43 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,17 @@
 
 typedef struct philo_bonus
 {
-	pthread_t	checker;
 	size_t		le;
 	int			ec;
 	int			id;
+	pthread_t	checker;
 }	t_th;
 
 typedef struct philo
 {
 	pthread_t	checker;
 	size_t		st;
+	size_t		std;
 	int			nph;
 	int			td;
 	int			te;
@@ -43,6 +44,7 @@ typedef struct philo
 	sem_t		*print;
 	sem_t		*end;
 	sem_t		*sec;
+	sem_t		*start;
 	t_th		th;
 }	t_phi;
 

@@ -6,7 +6,7 @@
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 14:08:04 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/15 16:11:50 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/17 15:39:03 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 void	thinking(t_phi *phi)
 {
 	sem_wait(phi->print);
-	printf("%ld %d is thinking\n", now(phi->st), phi->th.id);
+	printf("%zu %d is thinking\n", now(phi->std), phi->th.id);
 	sem_post(phi->print);
 }

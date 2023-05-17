@@ -6,7 +6,7 @@
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 16:25:24 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/15 16:22:19 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/16 11:00:33 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	*mon(void *arg)
 
 	phi = (t_phi *)arg;
 	th = phi->th;
+	my_sleep(time_ms(), phi->td / 4);
 	while (1)
 	{
 		if (tdone(phi))

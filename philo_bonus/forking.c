@@ -6,7 +6,7 @@
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 19:13:48 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/13 16:23:41 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/17 15:17:16 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	forking(t_phi	*phi)
 
 	i = -1;
 	phi->st = time_ms();
+	phi->std = phi->st + 10;
 	phi->pid = malloc(sizeof(pid_t) * phi->nph);
 	while (++i < phi->nph)
 	{
