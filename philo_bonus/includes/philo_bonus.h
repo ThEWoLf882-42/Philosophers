@@ -6,7 +6,7 @@
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:48:56 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/17 17:05:05 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/18 22:29:54 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ void	murder1(t_phi *phi, int i);
 void	murder2(t_phi *phi);
 void	sleeping(t_phi *phi);
 void	thinking(t_phi *phi);
-void	thinking1(t_phi *phi);
 int		eat_checker(t_phi *phi);
 void	death_checker(t_phi *phi);
 
