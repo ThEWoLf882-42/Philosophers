@@ -6,7 +6,7 @@
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 13:42:15 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/17 16:53:23 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/18 21:36:17 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 void	thread(t_phi *phi)
 {
-	while (time_ms() < phi->std)
-		usleep(phi->td);
+	my_sleep(phi->st, 10);
 	thinking(phi);
 	while (1)
 	{

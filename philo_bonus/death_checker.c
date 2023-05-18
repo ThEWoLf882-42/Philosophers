@@ -6,7 +6,7 @@
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 15:07:05 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/17 16:49:50 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/18 21:49:16 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ void	*death_check(void *arg)
 	t_phi	*phi;
 
 	phi = (t_phi *)arg;
-	while (time_ms() < phi->std)
-		usleep(phi->std);
+	usleep(((phi->std - time_ms()) + phi->te / 2) * 1000);
 	while (1)
 	{
 		if ((int)now(phi->th.le) >= phi->td)
@@ -28,7 +27,7 @@ void	*death_check(void *arg)
 			sem_post(phi->end);
 			exit(0);
 		}
-		my_sleep(time_ms(), (phi->td - now(phi->th.le)));
+		usleep((phi->td - now(phi->th.le)) * 1000);
 	}
 	return (NULL);
 }
