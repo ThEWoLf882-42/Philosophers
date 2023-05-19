@@ -6,7 +6,7 @@
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 15:07:20 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/16 10:53:52 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/19 16:48:37 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,10 @@ void	take_forks(t_th *th)
 
 	id = th->id - 1;
 	forks = th->phi->fork;
-	if (!(th->id % 2))
-	{
-		pthread_mutex_lock(&forks[id]);
-		forking(th, id);
-		pthread_mutex_lock(&forks[(id + 1) % th->phi->nph]);
-		forking(th, id);
-	}
-	else
-	{
-		pthread_mutex_lock(&forks[(id + 1) % th->phi->nph]);
-		forking(th, id);
-		pthread_mutex_lock(&forks[id]);
-		forking(th, id);
-	}
+	pthread_mutex_lock(&forks[id]);
+	forking(th, id);
+	pthread_mutex_lock(&forks[(id + 1) % th->phi->nph]);
+	forking(th, id);
 }
 
 void	unlock_fork(t_th *th)

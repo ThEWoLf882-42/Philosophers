@@ -6,7 +6,7 @@
 /*   By: agimi <agimi@student.1337.ma>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 16:25:24 by agimi             #+#    #+#             */
-/*   Updated: 2023/05/19 16:22:24 by agimi            ###   ########.fr       */
+/*   Updated: 2023/05/19 16:42:04 by agimi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	sded(t_phi *phi, t_th *th)
 	if (th->ec != th->phi->npe)
 	{
 		pthread_mutex_lock(&phi->mle[th->i]);
-		if (now(th->le) > (size_t)phi->td)
+		if (now(th->le) >= (size_t)phi->td)
 		{
 			pthread_mutex_lock(&phi->mdead);
 			phi->dead = 1;
